@@ -1,0 +1,23 @@
+{
+    "name": "josea/app-salon",
+    "description": "proyecto php mvc",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\":"./controllers",
+            "Model\\":"./models",
+            "Util\\":"./util"
+        }
+    },
+    "authors": [
+        {
+            "name": "JoseAndrades",
+            "email": "joseandradespl@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.6",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
