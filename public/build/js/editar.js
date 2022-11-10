@@ -1,1 +1,0 @@
-function modificarServicio(){idServicio()}function idServicio(){console.log("0")}
