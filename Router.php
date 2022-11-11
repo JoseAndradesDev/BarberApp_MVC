@@ -19,17 +19,14 @@ class Router
 
     public function comprobarRutas()
     {
-        
-        // Proteger Rutas...
-        crearSession();
 
-        $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['PATH_INFO'] ;
+        $currentUrl = ($_SERVER['REQUEST_URI'] === '') ? '/' :  $_SERVER['REQUEST_URI'] ;
         $method = $_SERVER['REQUEST_METHOD'];
             
-        if(isset($_SERVER['PATH_INFO'])) {
-            $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
+        if ($method === 'GET') {
+            $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
-            $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
+            $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
 
