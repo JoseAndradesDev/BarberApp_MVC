@@ -37,8 +37,8 @@ $router->get('/cita', [CitaController::class, 'index']);
 $router->get('/admin', [AdminController::class, 'index']);
 
 //API citas
-$router->get('/api/servicios', [APIController::class, 'index']);
-$router->post('/api/citas', [APIController::class, 'guardar']);
+$router->get('/api/servicios', [ApiController::class, 'index']);
+$router->post('/api/citas', [ApiController::class, 'guardar']);
 $router->post('/api/eliminar', [ApiController::class, 'eliminar']);
 
 //CRUD Servicios
