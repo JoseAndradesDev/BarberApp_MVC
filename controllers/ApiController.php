@@ -9,7 +9,7 @@ use Model\Cita;
 
 
 
-class APIController{
+class ApiController{
 
     public static function index(){
         $servicios = Servicio::all();
