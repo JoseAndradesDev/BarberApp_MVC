@@ -31,10 +31,10 @@ class Router
         $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER;
         $method = $_SERVER['REQUEST_METHOD'];
 
-        if ($method === 'GET') {
-            $fn = $this->getRoutes[$currentUrl] ?? null;
+        if (isset($_SERVER['PATH_INFO'])) {
+            $currentUrl = $_SERVER['PATH_INFO'] ?? '/';
         } else {
-            $fn = $this->postRoutes[$currentUrl] ?? null;
+            $currentUrl = $_SERVER['REQUEST_URI'] === '' ? '/' : $_SERVER['REQUEST_URI'];
         }
 
 
