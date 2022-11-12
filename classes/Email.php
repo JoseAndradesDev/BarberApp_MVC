@@ -1,6 +1,6 @@
 <?php
 
-namespace Classes;
+namespace Util;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use Dotenv\Dotenv as Dotenv;
