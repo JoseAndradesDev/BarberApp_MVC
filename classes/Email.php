@@ -27,10 +27,11 @@ class Email {
         $email->isSMTP();
         $email->Host = $_ENV['MAIL_HOST'];
         $email->SMTPAuth = true;
+        $email->Port = $_ENV['MAIL_PORT'];
         $email->Username = $_ENV['MAIL_USER'];
         $email->Password = $_ENV['MAIL_PASSWORD'];
         $email->SMTPSecure = 'tls';
-        $email->Port = $_ENV['MAIL_PORT'];
+        
 
         $email->setFrom('cuentas@appsalon.com');
         $email->addAddress('cuentas@appsalon.com' , 'AppSalon.com');
