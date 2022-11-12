@@ -1,6 +1,6 @@
 <?php
 
-namespace Util;
+namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use Dotenv\Dotenv as Dotenv;
@@ -57,11 +57,12 @@ class Email {
         //crear el objeto de email
         $email->isSMTP();
         $email->Host = $_ENV['MAIL_HOST'];
+        $email->Port = $_ENV['MAIL_PORT'];
         $email->SMTPAuth = true;
         $email->Username = $_ENV['MAIL_USER'];
         $email->Password = $_ENV['MAIL_PASSWORD'];
         $email->SMTPSecure = 'tls';
-        $email->Port = $_ENV['MAIL_PORT'];
+       
 
         $email->setFrom('cuentas@appsalon.com');
         $email->addAddress('cuentas@appsalon.com' , 'AppSalon.com');
