@@ -3,6 +3,9 @@
 namespace Classes;
 
 use PHPMailer\PHPMailer\PHPMailer;
+use Dotenv\Dotenv as Dotenv;
+$dotenv = Dotenv::createImmutable('../includes/.env');
+$dotenv->safeLoad();
 
 class Email {
 
@@ -19,12 +22,14 @@ class Email {
     public function enviarConfirmacion() {
         //crear el objeto de email
         $email = new PHPMailer();
-        $email->isSMTP();        
-        $email->Host = 'smtp.mailtrap.io';
+        // Configurar SMTP
+        $email->isSMTP();
+        $email->Host = $_ENV['MAIL_HOST'];
         $email->SMTPAuth = true;
-        $email->Port = 2525;
-        $email->Username = '318e0a6482e862';
-        $email->Password = '228be7078ec7ca';
+        $email->Username = $_ENV['MAIL_USER'];
+        $email->Password = $_ENV['MAIL_PASSWORD'];
+        $email->SMTPSecure = 'tls';
+        $email->Port = $_ENV['MAIL_PORT'];
 
         $email->setFrom('cuentas@appsalon.com');
         $email->addAddress('cuentas@appsalon.com' , 'AppSalon.com');
@@ -36,7 +41,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en AppSalon, solo debes confirmarla presionando el siguiente enlace</p>";
-        $contenido .= "<p>Presiona aqui: <a href='http://". $_SERVER["HTTP_HOST"] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a> </p>";
+        $contenido .= "<p>Presiona aqui: <a href='http://". $_ENV['SERVER_HOST'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a> </p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar este mensaje</p>";
         $contenido .= "</html>";
 
