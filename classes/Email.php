@@ -4,6 +4,7 @@ namespace Util;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use Dotenv\Dotenv as Dotenv;
+
 $dotenv = Dotenv::createImmutable('../includes/.env');
 $dotenv->safeLoad();
 
@@ -53,13 +54,13 @@ class Email {
 
     public function enviarInstrucciones() {
         //crear el objeto de email
-        $email = new PHPMailer();
-        $email->isSMTP();        
-        $email->Host = 'smtp.mailtrap.io';
+        $email->isSMTP();
+        $email->Host = $_ENV['MAIL_HOST'];
         $email->SMTPAuth = true;
-        $email->Port = 2525;
-        $email->Username = '318e0a6482e862';
-        $email->Password = '228be7078ec7ca';
+        $email->Username = $_ENV['MAIL_USER'];
+        $email->Password = $_ENV['MAIL_PASSWORD'];
+        $email->SMTPSecure = 'tls';
+        $email->Port = $_ENV['MAIL_PORT'];
 
         $email->setFrom('cuentas@appsalon.com');
         $email->addAddress('cuentas@appsalon.com' , 'AppSalon.com');
@@ -71,7 +72,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p>Hola<strong> " . $this->nombre . "</strong> has solicitado reestablecer tu password, sigue el enlace para hacerlo.</p>";
-        $contenido .= "<p>Presiona aqui: <a href='http://". $_SERVER["HTTP_HOST"] . "/recuperar?token=" . $this->token . "'>Reestablecer Password</a> </p>";
+        $contenido .= "<p>Presiona aqui: <a href='http://". $_ENV['SERVER_HOST'] . "/recuperar?token=" . $this->token . "'>Reestablecer Password</a> </p>";
         $contenido .= "<p>Si no solicitaste esta recuperacion, puedes ignorar este mensaje.</p>";
         $contenido .= "</html>";
 
