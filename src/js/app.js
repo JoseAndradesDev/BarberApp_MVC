@@ -147,7 +147,7 @@ function mostrarServicios(servicios){
 async function consultarAPI(){
 
     try {
-        const url = 'http://localhost:3000/api/servicios';
+        const url = 'https://git.heroku.com/mysterious-forest-16460.git/api/servicios';
         const resultado = await fetch(url);
         const servicios = await resultado.json();
         mostrarServicios(servicios);
