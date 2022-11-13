@@ -1,0 +1,58 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.buscador{
+    margin-bottom: 5rem;
+}
+.cabecera{
+    margin-top: 3rem;
+}
+.citas{
+    list-style: none;
+    padding: 0;
+    
+    li{
+        padding: 1rem;
+        border-top: 1px solid v.$gris;
+        p{
+            font-weight: v.$bold;
+            color: v.$azul;
+        }
+
+        span,.servicio{
+            font-weight: v.$regular;
+            color: v.$blanco;
+        }
+
+
+    }
+}
+
+.msj-cita{
+    margin-top: 10rem;
+}
+
+.btn-inicio.admin,.btn-crear.admin{
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem ;
+
+    @include m.desktop {
+        margin: 3rem 0 1rem 0;
+    }
+
+}
+
+.formulario.admin{
+    margin-top: 5rem;
+}
+
+    .acciones{
+        margin: 0;
+        .btn-crear,.btn-eliminar{
+            margin: 0;
+            padding:1rem;
+        }
+    }
+   
+
